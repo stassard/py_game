@@ -2,7 +2,7 @@ Cosmic Shooter
                                                                                 
   A simple 2D space shooter game built with Python and Pygame.                  
                   
-  About the Game
+  **About the Game**
 
   Control a fighter spaceship and shoot down incoming aliens before they reach
   you. Use the arrow keys to move left and right, and press Space to fire
@@ -10,7 +10,7 @@ Cosmic Shooter
    an alien reaches your fighter — a "Game Over" screen is displayed before
   closing.
 
-  Features
+  **Features**
 
   - Player-controlled fighter with smooth movement
   - Randomly respawning alien enemy
@@ -18,19 +18,19 @@ Cosmic Shooter
   - Live score tracking
   - Game over screen with final score
 
-  Controls
+**  Controls**
 
   ← → Arrow Keys  -  Move fighter
       
   Space  -  Fire rocket
 
 
-  Tech Stack
+**  Tech Stack**
 
   - Python 3
   - Pygame
 
-  How to Run
+**  How to Run**
 
   pip install pygame
   python main.py
