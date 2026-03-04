@@ -18,19 +18,19 @@ Cosmic Shooter
   - Live score tracking
   - Game over screen with final score
 
-**  Controls**
+  **Controls**
 
   ← → Arrow Keys  -  Move fighter
       
   Space  -  Fire rocket
 
 
-**  Tech Stack**
+  **Tech Stack**
 
   - Python 3
   - Pygame
 
-**  How to Run**
+  **How to Run**
 
   pip install pygame
   python main.py
