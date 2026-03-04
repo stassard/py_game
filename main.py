@@ -4,6 +4,8 @@ from random import randint
 
 pygame.init()
 
+game_font = pygame.font.Font(None, 30)
+
 screen_width, screen_height = 800, 600
 screen_fill_color = (32, 52, 71)
 
@@ -11,7 +13,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 
 pygame.display.set_caption("Cosmic Shooter")
 
-FIGHTER_STEP = 0.5
+FIGHTER_STEP = 1
 fighter_image = pygame.image.load("images/fighter.png")
 fighter_width, fighter_height = fighter_image.get_size()
 fighter_x, fighter_y = screen_width / 2 - fighter_width / 2, screen_height - fighter_height
@@ -24,16 +26,16 @@ rocket_width, rocket_height = rocket_image.get_size()
 rocket_x, rocket_y = 0, 0
 rocket_was_fired = False
 
-ALIEN_STEP = 0.1
+ALIEN_STEP = 1
 alien_image = pygame.image.load("images/alien.png")
 alien_width, alien_height = alien_image.get_size()
 alien_x, alien_y = randint(0, screen_width - alien_width), 0
 
 
+game_is_running = True
 
 
-
-while True:
+while game_is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
@@ -76,3 +78,22 @@ while True:
         screen.blit(rocket_image, (rocket_x, rocket_y))
 
     pygame.display.update()
+
+    if alien_y + alien_height > fighter_y:
+        game_is_running = False
+
+    if (rocket_was_fired and
+            alien_x < rocket_x < alien_x + alien_width - rocket_width and
+            alien_y < rocket_y < alien_y + alien_height - rocket_height):
+        rocket_was_fired = False
+        alien_x, alien_y = randint(0, screen_width - alien_width), 0
+
+
+game_over_text = game_font.render("GAME OVER", True, "white")
+game_over_rectangle = game_over_text.get_rect()
+game_over_rectangle.center = (screen_width / 2, screen_height / 2)
+screen.blit(game_over_text, game_over_rectangle)
+pygame.display.update()
+pygame.time.wait(5000)
+
+pygame.quit()
